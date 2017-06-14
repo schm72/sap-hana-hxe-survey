@@ -1,0 +1,12 @@
+service {
+	"buildPocSurvey.SurveyData::SurveyWorkflow.question" as "surveyQuestion"
+	  navigates ( "accQuestionScreens"    as "toQuestionScreens" );
+	  
+	"buildPocSurvey.SurveyData::SurveyWorkflow.questionScreen" as "surveyScreenQuestions"
+	  navigates ("accScreenQuestion"     as "toScreenQuestion");
+	  
+    association "accQuestionScreens" principal "surveyQuestion"("questionID") 
+      multiplicity "1" dependent "surveyScreenQuestions"("questionID") multiplicity "*";
+    association "accScreenQuestion" principal "surveyScreenQuestions"("questionID") 
+      multiplicity "1" dependent "surveyQuestion"("questionID") multiplicity "1";
+}

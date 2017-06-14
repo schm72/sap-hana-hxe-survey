@@ -1,0 +1,20 @@
+namespace "buildPocSurvey"."SurveyData";
+
+@Odata.publish: true
+
+context SurveyWorkflow{
+	
+	/*@@layout{"layoutInfo":{"x":-454,"y":-164}}*/
+entity question {
+        key questionID   : Integer GENERATEd always AS IDENTITY;
+            questionText : String(255);
+            questionType : String(10);
+    };
+	    /*@@layout{"layoutInfo":{"x":-182,"y":-164}}*/
+entity questionScreen {
+    key sreenID     : Integer not null;
+    key questionID  : Integer not null;
+        orderNumber : Integer;
+    };
+	
+};

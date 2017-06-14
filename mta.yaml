@@ -1,0 +1,29 @@
+ID: buildPocSurvey
+_schema-version: '2.0'
+description: survey for invited people
+version: 0.0.1
+
+modules:
+ - name: SurveyData
+   type: hdb
+   path: SurveyData
+   requires:
+    - name: hdi-container
+
+
+ - name: logicOData
+   type: nodejs
+   path: logicOData
+   requires:
+    - name: SurveyData
+    - name: hdi-container
+   provides:
+    - name: logicOData_api
+      properties:
+         url: ${default-url}
+
+resources:
+ - name: hdi-container
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
